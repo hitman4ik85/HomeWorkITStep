@@ -1,0 +1,29 @@
+.articles-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+}
+
+.articles-table th,
+.articles-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.articles-table th {
+    background-color: #f8f8f8;
+    text-align: left;
+}
+
+.row-action {
+    cursor: pointer;
+    color: #1677ff;
+}
+
+.row-action:hover {
+    text-decoration: underline;
+}
+
+.row-action.danger {
+    color: #cf1322;
+}

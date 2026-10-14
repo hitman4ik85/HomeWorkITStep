@@ -1,0 +1,42 @@
+# Visual Studio
+.vs/
+**/.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# .NET build output
+**/bin/
+**/obj/
+
+# Visual C++ build output
+**/x64/
+
+# Python virtual environments and cache
+**/.venv/
+**/venv/
+**/__pycache__/
+**/*.py[cod]
+
+# Node.js dependencies
+**/node_modules/
+
+# Build output
+**/dist/
+**/build/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+
+# Certificates and private keys
+*.pfx
+*.p12
+*.key
+
+# IDE and operating system files
+.idea/
+.DS_Store
+Thumbs.db

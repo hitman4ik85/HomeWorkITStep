@@ -1,0 +1,321 @@
+Враховуючи наш синтаксис написання коду, а більше взяти до уваги останні записи
+---                 
+//using System;
+//using System.IO;
+//using System.Text;
+
+//class Program
+//{
+//    static void Main(string[] args)
+//    {
+//        //using (FileStream file = new FileStream(filePath, FileStream.Create, FileStream.Write, FileStream.None))
+//        //using (FileStream file = new FileStream("D:\\IT Step Shag\\PK Kurs\\C#\\Lesson16\\Lesson16\\NewFile_s_sharp.txt", FileMode.Create, FileAccess.Write))
+//        //using (FileStream file = new FileStream("D:\\IT Step Shag\\PK Kurs\\C#\\Lesson16\\Lesson16\\NewFile_s_sharp.txt", FileMode.Open, FileAccess.Write))
+//        //using (FileStream file = new FileStream("D:\\IT Step Shag\\PK Kurs\\C#\\Lesson16\\Lesson16\\NewFile_s_sharp.txt", FileMode.Append, FileAccess.Write))  //додати до вже існуючого в файлі
+//        //using (FileStream file = new FileStream("D:\\IT Step Shag\\PK Kurs\\C#\\Lesson16\\Lesson16\\NewFile_s_sharp.txt", FileMode.CreateNew, FileAccess.Write)) //створює новий файл але якщо існує попередній то буде помилка
+//        /*        using (FileStream file = new FileStream("D:\\IT Step Shag\\PK Kurs\\C#\\Lesson16\\Lesson16\\NewFile_s_sharp.txt", FileMode.Append, FileAccess.Write))  //using - автоматично закриває файл
+//                {
+//                    Console.WriteLine("Enter str ");
+
+//                    string text = Console.ReadLine();
+
+//                    byte[]userwrite = Encoding.Default.GetBytes(text);
+
+//                    file.Write(userwrite);
+//                    Console.WriteLine("Ok");
+//                }*/
+
+//        /*        using (FileStream file = new FileStream("D:\\IT Step Shag\\PK Kurs\\C#\\Lesson16\\Lesson16\\NewFile_s_sharp.txt", FileMode.Open, FileAccess.Read))
+//                {
+//                    byte[] readByte = new byte[(int)file.Length];
+//                    file.Read(readByte);
+//                    Console.WriteLine(Encoding.Default.GetString(readByte));
+//                }*/
+
+//        /*        string filePath = "D:\\IT Step Shag\\PK Kurs\\C#\\Lesson16\\Lesson16\\NewFile_s_sharp.txt";
+//                using (StreamReader file = new StreamReader(filePath))
+//                {
+//                    Console.WriteLine(file.ReadToEnd());  //ReadLine() - прочита 1 рядок, Read() - кількість символів у файлі
+//                }*/
+
+//        //string filePath = "D:\\IT Step Shag\\PK Kurs\\C#\\Lesson16\\Lesson16\\NewFile_s_sharp.txt";
+
+//        /*        using (StreamReader file = new StreamReader(filePath))
+//                {
+//                    char[] user_read = new char[file.Read()];  //але це без пергшого символу, якщо потрібно повністю то треба число ставити наприклоад 10
+//                    file.Read(user_read, 0, user_read.Length);
+//                    Console.WriteLine(user_read);
+//                }*/
+
+//        /*        using (StreamWriter file = new StreamWriter(filePath))
+//                {
+//                    string text = Console.ReadLine();
+//                    file.Write(text); //WriteLine() - рядок, і буде переходити на наступний рядок, Write() - в один рядок
+//                }*/
+
+
+//        /*
+//                string filePath = "D:\\IT Step Shag\\PK Kurs\\C#\\Lesson16\\Lesson16\\NewFile.txt";
+//                using (FileStream fs = new FileStream(filePath, FileMode.Create))
+//                {
+//                    using (StreamWriter sw = new StreamWriter(fs))
+//                    {
+//                        string text = Console.ReadLine();
+//                        sw.WriteLine(text);
+//                    }
+//                    using (StreamReader sr = new StreamReader(filePath))
+//                    {
+//                        Console.WriteLine(sr.ReadToEnd());
+//                    }
+//                }
+//        */
+
+///*
+//        string filePath = "D:\\IT Step Shag\\PK Kurs\\C#\\Lesson16\\Lesson16\\NewFile_s_sharp.txt";
+//        string new_filePath = "D:\\IT Step Shag\\PK Kurs\\C#\\Lesson16\\NewFile_s_sharp.txt";
+//        //File.Move(filePath, new_filePath);  //щоб перемістити файл з одного міста на друге
+//        if (File.Exists(filePath))
+//        {
+//            File.Move(filePath, new_filePath);
+//            Console.WriteLine("OK");
+//        }
+//        else {
+//            Console.WriteLine("NO");
+//        }
+//*/
+
+///*
+//        string filePath = "D:\\IT Step Shag\\PK Kurs\\C#\\Lesson16\\Lesson16\\NewFile_s_sharp.txt";
+//        File.Create(filePath);
+
+//        if (File.Exists(filePath))
+//        {
+//            Console.WriteLine("OK");  //якщо істнує такий файл
+//        }
+//        else
+//        {
+//            Console.WriteLine("NO");  //якщо не існує
+//        }
+//*/
+
+
+
+
+
+
+
+//    }
+//}
+
+
+
+
+
+
+
+////ряд фібуначи
+//int a = 1;
+//int b = 1;
+//int newNumber = 0;
+//while(newNumber <= 1000)
+//{
+//    newNumber = a + b;
+//    Console.WriteLine(newNumber);
+//    a = b;
+//    b=newNumber;
+//}
+
+
+
+
+
+
+
+
+
+
+/*
+//Task1
+using System;
+using System.IO;
+using System.Text;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        using (FileStream file = new FileStream("D:\\IT Step Shag\\PK Kurs\\C#\\Lesson16\\Lesson16\\ProdyctsList.txt", FileMode.Create, FileAccess.Write))
+        {
+            Console.WriteLine("Vvedit spusok (stop dlja zavershennja): ");
+
+            while (true)
+            {
+                Console.Write("Prodykt: ");
+                string prodyct = Console.ReadLine();
+
+                if (prodyct.ToLower() == "stop")
+                {
+                    break;
+                }
+
+                byte[] spusok = Encoding.Default.GetBytes(prodyct + Environment.NewLine);
+
+                file.Write(spusok);
+            }
+
+            Console.WriteLine("Spusok prodyktiv yspishno zberezheno.");
+        }
+    }
+}
+*/
+
+/*
+//Task1-1
+using System;
+using System.IO;
+using System.Text;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        using (FileStream file = new FileStream("D:\\IT Step Shag\\PK Kurs\\C#\\Lesson16\\Lesson16\\ProdyctsList.txt", FileMode.Open, FileAccess.Read))
+        {
+            byte[] spusok = new byte[(int)file.Length];
+            file.Read(spusok);
+            string prodycts = Encoding.Default.GetString(spusok);
+
+            Console.WriteLine("Spusok prodyktiv:");
+            Console.WriteLine(prodycts);
+        }
+    }
+}
+*/
+
+/*
+//Task1-2
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        string filePath = "D:\\IT Step Shag\\PK Kurs\\C#\\Lesson16\\Lesson16\\ProdyctsList.txt";
+
+        using (StreamReader file = new StreamReader(filePath))
+        {
+            Console.WriteLine("Spusok prodyktiv:");
+            Console.WriteLine(file.ReadToEnd());
+        }
+    }
+}
+*/
+
+/*
+//Task1-3
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        string filePath = "D:\\IT Step Shag\\PK Kurs\\C#\\Lesson16\\Lesson16\\ProdyctsList.txt";
+
+        using (StreamWriter file = new StreamWriter(filePath))
+        {
+            Console.WriteLine("Vvedit spusok (stop dlja zavershennja): ");
+
+            while (true)
+            {
+                string text = Console.ReadLine();
+                if (text.ToLower() == "stop")
+                {
+                    break;
+                }
+                file.WriteLine(text);
+            }
+        }
+
+        Console.WriteLine("Spusok prodyktiv yspishno zberezheno.");
+    }
+}
+*/
+
+/*
+//Task2
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        string filePath = "D:\\IT Step Shag\\PK Kurs\\C#\\Lesson16\\Lesson16\\data.txt";
+
+        using (FileStream fs = new FileStream(filePath, FileMode.Create))
+        {
+            using (StreamWriter sw = new StreamWriter(fs))
+            {
+                for (int i = 1; i <= 5; i++)
+                {
+                    string text = new string('s', i);
+                    sw.WriteLine(text);
+                }
+            }
+
+            using (StreamReader sr = new StreamReader(filePath))
+            {
+                Console.WriteLine(sr.ReadToEnd());
+            }
+        }
+    }
+}
+*/
+
+
+/*
+//Task2-1
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        string filePath = "D:\\IT Step Shag\\PK Kurs\\C#\\Lesson16\\Lesson16\\data.txt";
+        Random rand = new Random();
+
+        using (FileStream fs = new FileStream(filePath, FileMode.Create))
+        {
+            using (StreamWriter sw = new StreamWriter(fs))
+            {
+                for (int i = 1; i <= 5; i++)
+                {
+                    int sumv = rand.Next(1, 6);
+                    char[] randSumv = new char[sumv];
+                    for (int j = 0; j < sumv; j++)
+                    {
+                        randSumv[j] = (char)rand.Next('a', 'z' + 1);
+                    }
+                    string text = new string(randSumv);
+                    sw.WriteLine(text);
+                }
+            }
+
+            using (StreamReader sr = new StreamReader(filePath))
+            {
+                Console.WriteLine(sr.ReadToEnd());
+            }
+        }
+    }
+}
+*/ ---
+
+Написати програму, яка буде записувати у файл (D:\IT Step Shag\PK Kurs\C#\DZ\DZ16\DZ16\Fibonachi.txt) 
+ряд чисел Фібоначчі, користувач задає число, програма записує у файл ряд (послідовність) чисел 
+від 1 до цього числа Фібоначчі (ряд Фібоначчі - число де кожне наступне число = сумі двох попередніх)
+Програма прочитує та виводить інформацію з файлу в консоль 
+( Тобто не виводити кількість послідовних чисел Фібоначи, а наприклад якщо користувач ввів 20, то виведе 
+послідовність від 1 до того введеного числа)

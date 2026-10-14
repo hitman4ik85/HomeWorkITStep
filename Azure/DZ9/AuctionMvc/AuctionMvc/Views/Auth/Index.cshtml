@@ -1,0 +1,108 @@
+﻿@model AuctionMvc.Models.User
+
+@{
+    ViewData["Title"] = "Cabinet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4 class="mb-4">User Cabinet / Add Lot</h4>
+
+@if (ViewBag.SuccessMessage != null)
+{
+    <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+}
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+}
+
+<div class="row">
+    <div class="dleft col-md-4 col-lg-4 col-sm-6">
+        @if (Model != null)
+        {
+            <img src="@Model.AvatarUrl" alt="Avatar" width="200px" />
+            <h4>@Model.Email</h4>
+            <p>Registered: @Model.CreatedAt</p>
+            <p>Balance: @Model.Balance.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-US"))</p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#my-modal">
+                Add Funds
+            </button>
+        }
+        else
+        {
+            <p class="text-danger">User not loaded.</p>
+        }
+    </div>
+
+    <div class="dright col-md-8 col-lg-8 col-sm-6">
+        <form asp-controller="Auction" asp-action="AddLot" method="post" enctype="multipart/form-data">
+            <div class="form-group mb-2">
+                <input type="text" name="Name" placeholder="Lot name" class="form-control" />
+            </div>
+
+            <div class="form-group mb-2">
+                <textarea name="Description" placeholder="Lot description" class="form-control"></textarea>
+            </div>
+
+            <div class="form-group mb-2">
+                <input type="number" name="Price" placeholder="Lot price" class="form-control" />
+            </div>
+
+            <div class="form-group mb-3">
+                <input type="file" name="PictureUrl" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Add Lot" class="btn btn-outline-warning" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="modal" tabindex="-1" id="my-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Add funds here: <input type="text" id="my-fund" /> </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="add_funds()">Add Funds</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    function add_funds() {
+        const funds = document.getElementById("my-fund").value;
+        if (funds) {
+            fetch('/Auth/AddFunds', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(parseFloat(funds))
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Funds added successfully!');
+                    location.reload();
+                } else {
+                    alert(data.message || 'Failed to add funds.');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        } else {
+            alert('Please enter a valid amount.');
+        }
+    }
+
+</script>

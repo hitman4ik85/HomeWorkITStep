@@ -1,0 +1,3 @@
+df['minmaxscaler'] = df['index'].transform(lambda item: (item - item.min()) / (item.max() - item.min()))
+
+df['i'] = df['index'].transform(lambda item: (item - item.shift(1)) / ...)

@@ -1,0 +1,89 @@
+.footer{
+    background-color: #333b76d6;
+    color: white;
+    text-transform: capitalize;
+}
+
+.footer-info{
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 0px 10px 0px;
+
+}
+
+
+.info1{
+    padding: 5px;
+}
+
+.info2{
+    padding: 5px;
+}
+
+.info3{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+}
+
+
+a{
+    display: flex;
+    text-decoration: none;
+    color:white;
+    padding-bottom: 10px;
+    flex-direction: row;
+}
+
+a:hover{
+    text-decoration: underline;    
+}
+
+.facebook-icon{    
+    width: 64px;
+    height: 64px;
+    background-image: url(/HomeWork/HomeWork_AL_13/icons/fb_gray.png);
+    background-repeat: no-repeat;
+    align-items: center;
+    background-origin: padding-box;
+    background-size: auto;
+}
+
+.facebook-icon:hover{
+    background-image: url(/HomeWork/HomeWork_AL_13/icons/fb.png);
+}
+
+
+.instagram-icon{
+    width: 64px;
+    height: 64px;
+    background-image: url(/HomeWork/HomeWork_AL_13/icons/insta_gray.png);
+    background-repeat: no-repeat;
+    align-items: center;
+    background-origin: padding-box;
+    background-size: auto;
+}
+
+.instagram-icon:hover{
+    background-image: url(/HomeWork/HomeWork_AL_13/icons/insta.png);
+}
+
+.youtube-icon{
+    width: 64px;
+    height: 64px;
+    background-image: url(/HomeWork/HomeWork_AL_13/icons/youtube_gray.png);
+    background-repeat: no-repeat;
+    align-items: center;
+    background-origin: padding-box;
+    background-size: auto;
+}
+
+.youtube-icon:hover{
+    background-image: url(/HomeWork/HomeWork_AL_13/icons/youtube.png);
+}
+
+.copyright{
+    text-align: center;
+    padding: 20px;
+}

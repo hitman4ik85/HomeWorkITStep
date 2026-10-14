@@ -1,0 +1,90 @@
+USE master
+GO
+
+IF DB_ID('UniversityDB') IS NOT NULL
+BEGIN
+    DROP DATABASE UniversityDB
+END
+GO
+
+CREATE DATABASE UniversityDB
+GO
+
+USE UniversityDB
+GO
+
+CREATE TABLE Faculties (
+    Id INT PRIMARY KEY IDENTITY,
+    Name NVARCHAR(100) NOT NULL
+)
+GO
+
+CREATE TABLE Departments (
+    Id INT PRIMARY KEY IDENTITY,
+    Name NVARCHAR(100) NOT NULL,
+    Building INT NOT NULL,
+    Financing MONEY NOT NULL,
+    FacultyId INT FOREIGN KEY REFERENCES Faculties(Id)
+)
+GO
+
+CREATE TABLE Groups (
+    Id INT PRIMARY KEY IDENTITY,
+    Name NVARCHAR(20) NOT NULL,
+    Year INT NOT NULL,
+    DepartmentId INT FOREIGN KEY REFERENCES Departments(Id)
+)
+GO
+
+CREATE TABLE Students (
+    Id INT PRIMARY KEY IDENTITY,
+    Name NVARCHAR(50) NOT NULL,
+    Surname NVARCHAR(50) NOT NULL,
+    Rating FLOAT NOT NULL
+)
+GO
+
+CREATE TABLE Teachers (
+    Id INT PRIMARY KEY IDENTITY,
+    Name NVARCHAR(50) NOT NULL,
+    Surname NVARCHAR(50) NOT NULL,
+    Salary MONEY NOT NULL,
+    IsProfessor BIT NOT NULL
+)
+GO
+
+CREATE TABLE Subjects (
+    Id INT PRIMARY KEY IDENTITY,
+    Name NVARCHAR(100) NOT NULL,
+    DepartmentId INT FOREIGN KEY REFERENCES Departments(Id)
+)
+GO
+
+CREATE TABLE Lectures (
+    Id INT PRIMARY KEY IDENTITY,
+    SubjectId INT FOREIGN KEY REFERENCES Subjects(Id),
+    TeacherId INT FOREIGN KEY REFERENCES Teachers(Id),
+    LectureDate DATE NOT NULL
+)
+GO
+
+CREATE TABLE GroupsStudents (
+    Id INT PRIMARY KEY IDENTITY,
+    GroupId INT FOREIGN KEY REFERENCES Groups(Id),
+    StudentId INT FOREIGN KEY REFERENCES Students(Id)
+)
+GO
+
+CREATE TABLE GroupsLectures (
+    Id INT PRIMARY KEY IDENTITY,
+    GroupId INT FOREIGN KEY REFERENCES Groups(Id),
+    LectureId INT FOREIGN KEY REFERENCES Lectures(Id)
+)
+GO
+
+CREATE TABLE GroupsCurators (
+    Id INT PRIMARY KEY IDENTITY,
+    GroupId INT FOREIGN KEY REFERENCES Groups(Id),
+    CuratorId INT FOREIGN KEY REFERENCES Teachers(Id)
+)
+GO

@@ -1,0 +1,382 @@
+Ось це ми зараз проходимо на уроці:
+Form1.cs ---
+
+namespace Lesson2
+{
+    public partial class Form1 : Form
+    {
+        ToolTip tp = new ToolTip();
+        public Form1()
+        {
+            InitializeComponent();
+            listBox1.Items.AddRange(new object[] {
+            "item1", "item2", "item3", 1, "item4"
+            });
+            tp.SetToolTip(button1, "Click if you want to clear list");
+            tp.SetToolTip(button2, "Click if you want to clear item");
+            tp.SetToolTip(button3, "Click if you want to copy list");
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (listBox1.Items.Count != 0)
+            {
+                for (int i = 0; i < listBox1.Items.Count; i++)
+                {
+                    listBox1.Items.Remove(listBox1.SelectedItems[i]);
+                }
+                MessageBox.Show("You delete something");
+            }
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Clear();
+
+            foreach (var item in listBox1.Items)
+            {
+                richTextBox1.AppendText(item.ToString() + Environment.NewLine);
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            progressBar1.Minimum = 0;
+            progressBar1.Maximum = 700;
+            progressBar1.Step = 1;
+            for (int i = 0; i <= 700; i++)
+            {
+                progressBar1.PerformStep();
+                label2.Text = "Value: " + progressBar1.Value.ToString();
+                Update();
+                Thread.Sleep(100);
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Color color = Color.FromArgb(trackBar1.Value, trackBar2.Value, trackBar3.Value);
+            button5.BackColor = color;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Color color1 = Color.FromArgb((int)numericUpDown1.Value, (int)numericUpDown2.Value, (int)numericUpDown3.Value);
+            listBox1.BackColor = color1;
+        }
+    }
+}
+
+Form1.Designer.cs ---
+
+namespace Lesson2
+{
+    partial class Form1
+    {
+        /// <summary>
+        ///  Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        ///  Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        ///  Required method for Designer support - do not modify
+        ///  the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            components = new System.ComponentModel.Container();
+            label1 = new Label();
+            listBox1 = new ListBox();
+            button1 = new Button();
+            button2 = new Button();
+            richTextBox1 = new RichTextBox();
+            button3 = new Button();
+            toolStrip1 = new ToolStrip();
+            toolTip1 = new ToolTip(components);
+            progressBar1 = new ProgressBar();
+            button4 = new Button();
+            label2 = new Label();
+            trackBar1 = new TrackBar();
+            trackBar2 = new TrackBar();
+            trackBar3 = new TrackBar();
+            button5 = new Button();
+            button6 = new Button();
+            numericUpDown1 = new NumericUpDown();
+            numericUpDown2 = new NumericUpDown();
+            numericUpDown3 = new NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)trackBar2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)trackBar3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown3).BeginInit();
+            SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(39, 31);
+            label1.Name = "label1";
+            label1.Size = new Size(115, 20);
+            label1.TabIndex = 0;
+            label1.Text = "Enter some text:";
+            label1.Click += label1_Click;
+            // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.Location = new Point(44, 73);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(153, 244);
+            listBox1.TabIndex = 1;
+            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(39, 343);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 2;
+            button1.Text = "Clear";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(139, 343);
+            button2.Name = "button2";
+            button2.Size = new Size(58, 29);
+            button2.TabIndex = 3;
+            button2.Text = "OK";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // richTextBox1
+            // 
+            richTextBox1.Location = new Point(237, 73);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(154, 241);
+            richTextBox1.TabIndex = 4;
+            richTextBox1.Text = "";
+            richTextBox1.TextChanged += richTextBox1_TextChanged;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(237, 343);
+            button3.Name = "button3";
+            button3.Size = new Size(154, 29);
+            button3.TabIndex = 5;
+            button3.Text = "CopyFromListBox";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
+            // toolStrip1
+            // 
+            toolStrip1.ImageScalingSize = new Size(20, 20);
+            toolStrip1.Location = new Point(0, 0);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new Size(1112, 25);
+            toolStrip1.TabIndex = 6;
+            toolStrip1.Text = "toolStrip1";
+            // 
+            // progressBar1
+            // 
+            progressBar1.Location = new Point(695, 73);
+            progressBar1.Name = "progressBar1";
+            progressBar1.Size = new Size(375, 29);
+            progressBar1.TabIndex = 7;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(976, 121);
+            button4.Name = "button4";
+            button4.Size = new Size(94, 29);
+            button4.TabIndex = 8;
+            button4.Text = "Click";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(631, 181);
+            label2.Name = "label2";
+            label2.Size = new Size(0, 20);
+            label2.TabIndex = 9;
+            // 
+            // trackBar1
+            // 
+            trackBar1.Location = new Point(444, 131);
+            trackBar1.Maximum = 255;
+            trackBar1.Name = "trackBar1";
+            trackBar1.Size = new Size(304, 56);
+            trackBar1.TabIndex = 10;
+            trackBar1.TickFrequency = 10;
+            // 
+            // trackBar2
+            // 
+            trackBar2.Location = new Point(444, 181);
+            trackBar2.Maximum = 255;
+            trackBar2.Name = "trackBar2";
+            trackBar2.Size = new Size(304, 56);
+            trackBar2.TabIndex = 11;
+            trackBar2.TickFrequency = 10;
+            // 
+            // trackBar3
+            // 
+            trackBar3.Location = new Point(444, 226);
+            trackBar3.Maximum = 255;
+            trackBar3.Name = "trackBar3";
+            trackBar3.Size = new Size(304, 56);
+            trackBar3.TabIndex = 12;
+            trackBar3.TickFrequency = 10;
+            // 
+            // button5
+            // 
+            button5.Location = new Point(780, 143);
+            button5.Name = "button5";
+            button5.Size = new Size(133, 58);
+            button5.TabIndex = 13;
+            button5.Text = "button5";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
+            // 
+            // button6
+            // 
+            button6.Location = new Point(598, 370);
+            button6.Name = "button6";
+            button6.Size = new Size(180, 37);
+            button6.TabIndex = 17;
+            button6.Text = "button6";
+            button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
+            // 
+            // numericUpDown1
+            // 
+            numericUpDown1.Location = new Point(458, 324);
+            numericUpDown1.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
+            numericUpDown1.Name = "numericUpDown1";
+            numericUpDown1.Size = new Size(150, 27);
+            numericUpDown1.TabIndex = 18;
+            // 
+            // numericUpDown2
+            // 
+            numericUpDown2.Location = new Point(615, 324);
+            numericUpDown2.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
+            numericUpDown2.Name = "numericUpDown2";
+            numericUpDown2.Size = new Size(150, 27);
+            numericUpDown2.TabIndex = 19;
+            // 
+            // numericUpDown3
+            // 
+            numericUpDown3.Location = new Point(771, 324);
+            numericUpDown3.Maximum = new decimal(new int[] { 255, 0, 0, 0 });
+            numericUpDown3.Name = "numericUpDown3";
+            numericUpDown3.Size = new Size(150, 27);
+            numericUpDown3.TabIndex = 20;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1112, 501);
+            Controls.Add(numericUpDown3);
+            Controls.Add(numericUpDown2);
+            Controls.Add(numericUpDown1);
+            Controls.Add(button6);
+            Controls.Add(button5);
+            Controls.Add(trackBar3);
+            Controls.Add(trackBar2);
+            Controls.Add(trackBar1);
+            Controls.Add(label2);
+            Controls.Add(button4);
+            Controls.Add(progressBar1);
+            Controls.Add(toolStrip1);
+            Controls.Add(button3);
+            Controls.Add(richTextBox1);
+            Controls.Add(button2);
+            Controls.Add(button1);
+            Controls.Add(listBox1);
+            Controls.Add(label1);
+            Name = "Form1";
+            Text = "Form1";
+            Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)trackBar1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trackBar2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trackBar3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown3).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
+        #endregion
+
+        private Label label1;
+        private ListBox listBox1;
+        private Button button1;
+        private Button button2;
+        private RichTextBox richTextBox1;
+        private Button button3;
+        private ToolStrip toolStrip1;
+        private ToolTip toolTip1;
+        private ProgressBar progressBar1;
+        private Button button4;
+        private Label label2;
+        private TrackBar trackBar1;
+        private TrackBar trackBar2;
+        private TrackBar trackBar3;
+        private Button button5;
+        private Button button6;
+        private NumericUpDown numericUpDown1;
+        private NumericUpDown numericUpDown2;
+        private NumericUpDown numericUpDown3;
+    }
+}
+
+
+Використовуючи наш синтаксис написання коду, виконай наступне завдання у новому проекті DZ2:
+Написати додаток, який буде відображати кількість тексту із текстового поля в progressBar. 
+Тобто потрібно додати тескстове поле RichTextBox і потрібно отримувати його довжину і виводити
+в ProgresBar

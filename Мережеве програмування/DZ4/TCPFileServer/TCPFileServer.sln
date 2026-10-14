@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCPFileServer", "TCPFileServer\TCPFileServer.csproj", "{4182F4B5-722E-4823-9086-CD6204E8AD82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCPFileClient1", "TCPFileClient1\TCPFileClient1.csproj", "{3C7A6EB1-26BC-495A-9056-0790221DAB9D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4182F4B5-722E-4823-9086-CD6204E8AD82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4182F4B5-722E-4823-9086-CD6204E8AD82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4182F4B5-722E-4823-9086-CD6204E8AD82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4182F4B5-722E-4823-9086-CD6204E8AD82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C7A6EB1-26BC-495A-9056-0790221DAB9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C7A6EB1-26BC-495A-9056-0790221DAB9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C7A6EB1-26BC-495A-9056-0790221DAB9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C7A6EB1-26BC-495A-9056-0790221DAB9D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

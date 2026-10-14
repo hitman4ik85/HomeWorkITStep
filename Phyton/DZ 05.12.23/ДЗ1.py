@@ -1,0 +1,7 @@
+print("")
+print("Завдання 1\n")
+print("To be \nor not \nto be")
+print("")
+print("Завдання 2\n")
+print("\"Life is what happens \nwhen \nyou're busy making other plans\" \nJohn Lennon")
+print("")

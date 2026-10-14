@@ -1,0 +1,90 @@
+USE master;
+GO
+IF DB_ID('productsdb') IS NOT NULL
+BEGIN
+    DROP DATABASE productsdb;
+END
+GO
+CREATE DATABASE productsdb
+GO
+
+USE productsdb
+
+CREATE TABLE Products
+(
+	Id INT PRIMARY KEY IDENTITY,
+	ProductName NVARCHAR(30) NOT NULL,
+	Manufacturer NVARCHAR(30) NOT NULL,
+	ProductCount INT DEFAULT 0,
+	Price MONEY NOT NULL
+)
+
+CREATE TABLE Customers
+(
+	Id INT PRIMARY KEY IDENTITY,
+	FirstName NVARCHAR(30) NOT NULL
+)
+GO
+
+CREATE TABLE Orders
+(
+	Id INT PRIMARY KEY IDENTITY,
+	ProductId INT NOT NULL REFERENCES Products(Id) ON DELETE CASCADE,  --або UPDATE
+	CustomerId INT NOT NULL REFERENCES Customers(Id) ON DELETE CASCADE,
+	CreatedAt DATE NOT NULL,  -- CreatedAt DATE NOT NULL DEFAULT GETDATE(),
+	ProductCount INT DEFAULT 1,
+	Price MONEY NOT NULL
+)
+GO
+
+INSERT INTO Products 
+VALUES
+('Iphone 12', 'Apple', 15, 20000),
+('Pixel 6A', 'Google', 12, 10000),
+('Iphone 13', 'Apple', 12, 25000),
+('Galaxy S22', 'Samsung', 14, 19000),
+('Galaxy S24', 'Samsung', 12, 64000),
+('13 Pro 5G', 'Xiaomi', 16, 40000),
+('Pixel 8 Pro', 'Google', 12, 50000)
+
+GO
+INSERT INTO Customers
+VALUES
+('Tom'),
+('Bob'),
+('Sam')
+
+GO
+INSERT INTO Orders
+VALUES
+(
+	(SELECT Id FROM Products WHERE ProductName = 'Iphone 12'),
+	(SELECT Id FROM Customers WHERE FirstName = 'Tom'),
+	'2024-09-20',
+	2,
+	(SELECT Price FROM Products WHERE ProductName = 'Iphone 12')
+),
+
+(
+	(SELECT Id FROM Products WHERE ProductName = 'Galaxy S22'),
+	(SELECT Id FROM Customers WHERE FirstName = 'Tom'),
+	'2024-09-20',
+	1,
+	(SELECT Price FROM Products WHERE ProductName = 'Galaxy S22')
+),
+
+(
+	(SELECT Id FROM Products WHERE ProductName = 'Pixel 8 Pro'),
+	(SELECT Id FROM Customers WHERE FirstName = 'Bob'),
+	'2024-08-20',
+	1,
+	(SELECT Price FROM Products WHERE ProductName = 'Pixel 8 Pro')
+),
+
+(
+	(SELECT Id FROM Products WHERE ProductName = 'Pixel 8 Pro'),
+	(SELECT Id FROM Customers WHERE FirstName = 'Bob'),
+	'2024-08-24',
+	1,
+	(SELECT Price FROM Products WHERE ProductName = 'Pixel 8 Pro')
+)

@@ -1,0 +1,29 @@
+.parent{
+    height: 420px;
+    font-family: Arial, sans-serif;
+    background-color: rgb(228, 165, 165);
+    color: white;
+    margin: 20px;
+    padding: 20px;
+}
+.child{
+    height: 40px;
+    background-color: rgb(230, 134, 134);
+    color: white;
+    font-size: 25px;
+    width: auto;
+    margin: 20px;
+    padding: 10px;
+}
+p {
+    margin-top: 6px;
+    padding-left: 15px;
+}
+span {
+    background-color: rgb(218, 37, 37);
+    margin: 15px;
+    padding: 16px;
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 50px;
+}

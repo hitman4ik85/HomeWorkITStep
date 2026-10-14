@@ -1,0 +1,10 @@
+body {
+    background-color: rgb(149, 149, 246);
+}
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    grid-gap: 48px;
+    margin-top: 80px;
+}

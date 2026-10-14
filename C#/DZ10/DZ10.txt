@@ -1,0 +1,344 @@
+Враховуючи тему яку ми проходили на уроці ---- 
+
+using System.Drawing;
+public interface IModel
+{
+    void sayModel();
+}
+public interface IAnimal
+{
+
+    void sayHello(string name);
+
+}
+
+class Cat : IAnimal, IModel
+{
+
+    public void sayModel()
+    {
+
+        Console.WriteLine("Model S");
+
+    }
+    public void sayHello(string name)
+    {
+        Console.WriteLine($"{name} May");
+    }
+}
+class Dog : IAnimal, IModel
+{
+    public void sayModel()
+    {
+        Console.WriteLine("Model D");
+    }
+    public void sayHello(string name)
+    {
+        Console.WriteLine($"{name} gav");
+    }
+
+}
+
+
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        IAnimal obj = new Cat();
+        obj.sayHello("Cat1");
+
+        IAnimal obj2 = new Dog();
+        obj2.sayHello("dog1");
+    }
+}
+
+
+
+
+public interface IPerson
+{
+    void showInfo();
+    public string name { get; set; }
+    public int age { get; set; }
+}
+
+class Student : IPerson
+{
+    public string name { get; set; }
+    public int age { get; set; }
+    public Student() { }
+    public Student(string name, int age)
+    {
+        this.name = name;
+        this.age = age;
+    }
+    public void showInfo()
+    {
+        Console.WriteLine($"Name: {name}, Age :{age} ");
+    }
+}
+
+class Program
+
+{
+    public static void Main(string[] args)
+    {
+        Student student = new Student("bob", 12);
+
+        IPerson obj = new Student("mark", 18);
+
+        student.showInfo();
+
+        obj.showInfo();
+    }
+}
+
+
+
+
+using System;
+
+public abstract class Car
+{
+    public string Model { get; set; }
+    public Car(string model)
+    {
+        Model = model;
+    }
+    public abstract void StartCar();
+    public void StopCar()
+    {
+        Console.WriteLine("Car is stopping.");
+    }
+}
+
+class ElectricCar : Car
+{
+    public ElectricCar(string model) : base(model) { }
+    public override void StartCar()
+    {
+        Console.WriteLine($"Electric car {Model} is starting.");
+    }
+}
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        Car myCar = new ElectricCar("Tesla Model S");
+        myCar.StartCar();
+        myCar.StopCar();
+    }
+}
+
+
+
+
+
+
+
+
+
+/*//Task1
+using System;
+
+public interface IPerson
+{
+    void Show(string name, int age);
+}
+
+class Person1 : IPerson
+{
+    public void Show(string name, int age)
+    {
+        Console.WriteLine($"Hello {name}, vik: {age}");
+    }
+}
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        IPerson person = new Person1();
+        person.Show("Andrei",39);
+    }
+}*/
+
+
+/*//Task2
+using System;
+
+public interface IVehicle
+{
+    void Start();
+    void Stop();
+}
+
+public interface IElectricDevice
+{
+    void Charge();
+}
+
+class ElectricCar : IVehicle, IElectricDevice
+{
+    public void Start()
+    {
+        Console.WriteLine("Nash car zavivsa");
+    }
+
+    public void Stop()
+    {
+        Console.WriteLine("Nash car zaglyshuvsa");
+    }
+
+    public void Charge()
+    {
+        Console.WriteLine("Nash car pochav zarjazhatusa");
+    }
+}
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        ElectricCar myCar = new ElectricCar();
+        myCar.Start();
+        myCar.Stop();
+        myCar.Charge();
+    }
+}*/
+
+
+/*//Task3
+using System;
+
+public interface IWorker
+{
+    bool isWork { get; set; }
+    void show();
+}
+
+class Manager : IWorker
+{
+    public bool isWork { get; set; }
+    public string name { get; set; }
+
+    public Manager() { }
+    public Manager(string name, bool isWork)
+    {
+        this.name = name;
+        this.isWork = isWork;
+    }
+
+    public void show()
+    {
+        if (isWork)
+        {
+            Console.WriteLine($"Manager {name} is working.");
+        }
+        else
+        {
+            Console.WriteLine($"Manager {name} is not working.");
+        }
+    }
+}
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+
+        Manager manager = new Manager("Andrei", true);
+        manager.show();
+        IWorker worker = new Manager("Sergei", false);
+        worker.show();
+    }
+}*/
+
+
+/*//Task4
+using System;
+
+public abstract class Vehicle
+{
+    public string Make { get; set; }
+
+    public Vehicle(string make)
+    {
+        Make = make;
+    }
+
+    public abstract void Drive();
+
+    public void Stop()
+    {
+        Console.WriteLine("Vehicle stopped.");
+    }
+}
+
+public class Car : Vehicle
+{
+    public Car(string make) : base(make) { }
+
+    public override void Drive()
+    {
+        Console.WriteLine("The car is driving.");
+    }
+
+    public void Honk()
+    {
+        Console.WriteLine("The car honks.");
+    }
+}
+
+public class Bike : Vehicle
+{
+    public Bike(string make) : base(make) { }
+
+    public override void Drive()
+    {
+        Console.WriteLine("The bike is driving.");
+    }
+
+    public void RingBell()
+    {
+        Console.WriteLine("The bike rings its bell.");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Car newCar = new Car("Toyota");
+        newCar.Drive();
+        newCar.Stop();
+        newCar.Honk();
+
+        Bike newBike = new Bike("Giant");
+        newBike.Drive();
+        newBike.Stop();
+        newBike.RingBell();
+    }
+}*/
+
+----- 
+Виконати враховуючи ці прикладах завдання:
+
+Завдання 1
+Створіть інтерфейс IOutput. У ньому мають бути два
+методи:
+■ void Show() — відображає інформацію;
+■ void Show(string info) — відображає інформацію та
+інформаційне повідомлення, зазначене у параметрі
+info.
+Створіть клас Array (масив цілого типу) із необхід-
+ними методами. Цей клас має імплементувати інтерфейс
+IOutput.
+Метод Show() - відображає на екран елементи масиву.
+Метод Show(string info) — відображає на екрані еле-
+менти масиву та інформаційне повідомлення, зазначене
+у параметрі info.
+Напишіть код для тестування отриманої функціо-
+нальності. 

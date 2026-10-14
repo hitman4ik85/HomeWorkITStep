@@ -1,0 +1,41 @@
+USE master
+GO
+
+IF DB_ID('SportsStoreDB') IS NOT NULL
+BEGIN
+    DROP DATABASE SportsStoreDB
+END
+GO
+
+CREATE DATABASE SportsStoreDB
+GO
+
+USE SportsStoreDB
+GO
+
+CREATE TABLE Products (
+    ProductId INT IDENTITY PRIMARY KEY,
+    ProductName NVARCHAR(30) NOT NULL,
+    ProductCount INT NOT NULL,
+    Manufacturer NVARCHAR(30) NOT NULL,
+    Price MONEY NOT NULL,
+    ProductType NVARCHAR(30) NOT NULL
+)
+GO
+
+CREATE TABLE Clients (
+    ClientId INT IDENTITY PRIMARY KEY,
+    FirstName NVARCHAR(30) NOT NULL,
+    LastName NVARCHAR(30) NOT NULL,
+    Email NVARCHAR(30),
+    RegistrationDate DATETIME NOT NULL DEFAULT GETDATE()
+)
+GO
+
+CREATE TABLE Sellers (
+    SellerId INT IDENTITY PRIMARY KEY,
+    FirstName NVARCHAR(30) NOT NULL,
+    LastName NVARCHAR(30) NOT NULL,
+    TotalSales MONEY NOT NULL DEFAULT 0
+)
+GO

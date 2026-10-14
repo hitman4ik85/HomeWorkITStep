@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css" />
+  <title>Document</title>
+</head>
+
+<body>
+  <section>
+    <div class="main">
+
+      <div class="forms">
+
+        <form class="mui-form" id="registration">
+          <legend>Registration form</legend>
+          <div class="mui-textfield" id="username">
+            <img src="/icons/username.png" alt="">
+            <input type="text" placeholder="Username">
+          </div>
+          <div class="mui-textfield" id="email">
+            <img src="/icons/email.png" alt="">
+            <input type="email" placeholder="Email address">
+          </div>
+          <div class="mui-textfield" id="password_div">
+            <img src="/icons/pswd.png" alt="">
+            <div class="password">
+              <input type="password" placeholder="Password">
+              <input type="password" placeholder="Confirm password">
+            </div>
+          </div>
+
+          <section class="check_inputs">
+            <div class="mui-checkbox">
+              <label>
+                <input type="checkbox" value="" checked>
+                I want to receive news and special offers
+              </label>
+            </div>
+            <div class="mui-checkbox">
+              <label>
+                <input type="checkbox" value="" checked>
+                I agree with the Terms and Conditions
+              </label>
+            </div>
+          </section>
+
+        </form>
+
+        <form class="mui-form" id="personal_details">
+          <legend>Personal details</legend>
+          <div class="mui-textfield" id="names">
+            <input type="text" placeholder="First name">
+            <input type="text" placeholder="Last name">
+          </div>
+          <div class="info">
+            <select class="form_select">
+              <option selected>Male</option>
+              <option value="1">Female</option>
+            </select>
+            <input id="date_media" type="date">
+          </div>
+        </form>
+      </div>
+      <div class="butt_submit">
+        <button class="button_sub">Submit</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+</body>
+
+</html>

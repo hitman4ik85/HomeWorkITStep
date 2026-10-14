@@ -1,0 +1,11 @@
+В класному проєкті (зі статтями) додати:
+Сторінку з реєстрацією користувача.
+
+src\thunks\authThunk.js
+slice - не потрібен
+після реєстрації - перенаправлення на сторінку Login 
+
+перенаправлення:
+import { useNavigate } from "react-router";
+let navigate = useNavigate(); 
+navigate("/login");

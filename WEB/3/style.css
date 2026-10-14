@@ -1,0 +1,82 @@
+/* Щоб красивим була надпис, імпорт шрифтів*/
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Rubik+Broken+Fax&family=Rubik+Doodle+Shadow&family=Rubik+Doodle+Triangles&family=Rubik+Scribble&display=swap');
+body {
+    margin: 0;
+    padding: 0;
+    font-family: cursive, sans-serif;
+}
+
+header, nav, main, footer {
+    border: 2px solid black;
+}
+
+header {
+    background-color: orange;
+    color: white;
+    text-align: center;
+    width: auto;
+    margin: 7px;
+    padding: 7px;
+    min-height: 100px;
+    justify-content: space-around;
+}
+
+nav {
+    background-color: lime;
+    width: 195px;
+    float: left;
+    margin: 7px;
+    padding: 7px;
+    min-height: 700px;
+    flex-direction: column;
+}
+
+main {
+    background-color: rgb(252, 252, 184);
+    width: 87%;
+    float: right;
+    margin: 7px;
+    padding: 7px;
+    min-height: 700px;
+    align-content: center;
+}
+
+footer {
+    background-color: purple;
+    clear: both;
+    text-align: center;
+    color: white;
+    width: auto;
+    margin: 7px;
+    padding: 7px;
+    min-height: 100px;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+main h1 {
+    font-family: 'Pacifico';
+    text-align: center;
+    font-size: 36px;
+    font-weight: 100px;
+    color: darkblue;
+    animation: welcome 5s ease-in-out;
+}
+
+li {
+    line-height: 2
+}
+
+.maintext {
+padding: 20px;
+margin: 10px;
+}
+
+@keyframes welcome {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

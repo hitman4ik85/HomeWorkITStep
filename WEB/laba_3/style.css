@@ -1,0 +1,112 @@
+/*загрузка шрифтов*/
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Rubik+Broken+Fax&family=Rubik+Doodle+Shadow&family=Rubik+Doodle+Triangles&family=Rubik+Scribble&display=swap');
+
+.first-block{
+    display: flex;
+    justify-content: center;
+
+    font-size: 24px;
+    font-weight: 100px;
+    animation: anim 5s ease-out; 
+    font-family: 'Rubik Broken Fax'; 
+    font-family: 'Rubik Doodle Tria';
+    font-family: 'Pacifico'; 
+    
+}
+
+.second-block{
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    width: 300px;
+    height: 250px;
+}
+
+#img1 {
+    width: 240px;
+    height: 150px;
+}
+
+
+
+
+em{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+  
+@keyframes anim{
+    0%{
+        transform: scale(0);
+    }
+    50%{
+        transform: scale(100%);
+    }
+    100%{
+        transform: scale(100%);
+    }
+}
+
+
+.centr{
+    display: flex;
+    justify-content: center;
+    grid-gap: 20px;
+}
+header{
+    display: flex;
+    justify-content: center;
+
+    background-color: #FF8B00;
+    height: 100px;
+    border: 2px solid #000000;
+}
+
+nav{
+    float: left;
+    display: block;
+    
+    background-color: #80FF00 ;
+    width: 20%;
+    height: 450px;
+    margin-top: 10px;
+    border: 2px solid #000000;
+}
+
+main{
+    float: left;
+    display: block;
+
+    width: 79.2%;
+    height: 450px;
+    background-color: #F0E78C ;
+    margin-top: 10px;
+    margin-left: 10px;
+    border: 2px solid #000000;
+    padding-left: 10px;
+}
+
+footer{
+    float: left;
+    display: block;
+    
+    width: 100%;
+    height: 100px;
+    border: 2px solid #000000;
+    background-color: #FFB6C1 ;
+    margin-top: 10px;
+    padding-left: 10px;
+}
+
+span{
+    color:blueviolet;
+    
+}
+
+

@@ -1,0 +1,48 @@
+USE master;
+GO
+
+IF DB_ID('Academy') IS NOT NULL
+BEGIN
+    DROP DATABASE Academy;
+END
+GO
+
+CREATE DATABASE Academy;
+GO
+
+USE Academy;
+GO
+
+CREATE TABLE Departments (
+    Id INT IDENTITY PRIMARY KEY,
+    Financing MONEY NOT NULL CHECK (Financing >= 0) DEFAULT 0,
+    Name NVARCHAR(100) NOT NULL UNIQUE
+);
+GO
+
+CREATE TABLE Faculties (
+    Id INT IDENTITY PRIMARY KEY,
+    Dean NVARCHAR(MAX) NOT NULL,
+    Name NVARCHAR(100) NOT NULL UNIQUE
+);
+GO
+
+CREATE TABLE Groups (
+    Id INT IDENTITY PRIMARY KEY,
+    Name NVARCHAR(10) NOT NULL UNIQUE,
+    Rating INT NOT NULL CHECK (Rating BETWEEN 0 AND 5),
+    Year INT NOT NULL CHECK (Year BETWEEN 1 AND 5)
+);
+GO
+
+CREATE TABLE Teachers (
+    Id INT IDENTITY PRIMARY KEY,
+    EmploymentDate DATE NOT NULL CHECK (EmploymentDate >= '1990-01-01'),
+    IsAssistant BIT NOT NULL DEFAULT 0,
+    IsProfessor BIT NOT NULL DEFAULT 0,
+    Name NVARCHAR(MAX) NOT NULL,
+    Surname NVARCHAR(MAX) NOT NULL,
+    Position NVARCHAR(MAX) NOT NULL,
+    Premium MONEY NOT NULL CHECK (Premium >= 0) DEFAULT 0,
+    Salary MONEY NOT NULL CHECK (Salary > 0)
+);

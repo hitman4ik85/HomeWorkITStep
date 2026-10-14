@@ -1,0 +1,38 @@
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+}
+
+.users-table th,
+.users-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    vertical-align: middle;
+}
+
+.users-table th {
+    background-color: #f8f8f8;
+    text-align: left;
+}
+
+.actions-cell {
+    white-space: nowrap;
+}
+
+.row-action {
+    cursor: pointer;
+    color: #1677ff;
+}
+
+.row-action:hover {
+    text-decoration: underline;
+}
+
+.row-action.danger {
+    color: #cf1322;
+}
+
+.edit-input {
+    min-width: 200px;
+}

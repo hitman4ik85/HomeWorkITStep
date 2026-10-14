@@ -1,0 +1,24 @@
+.header {
+  padding: 1rem 3rem;
+  background-color: #f3e5f5;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-menu,
+.auth-menu {
+  display: flex;
+  gap: 1rem;
+}
+
+.header a {
+  text-decoration: none;
+  color: #2b00ff;
+}
+
+.header a.active {
+  font-weight: 600;
+}

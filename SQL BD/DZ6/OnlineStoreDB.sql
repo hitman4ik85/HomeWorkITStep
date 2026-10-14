@@ -1,0 +1,68 @@
+USE master;
+GO
+
+IF DB_ID('OnlineStoreDB') IS NOT NULL
+BEGIN
+    DROP DATABASE OnlineStoreDB;
+END
+GO
+
+CREATE DATABASE OnlineStoreDB;
+GO
+
+USE OnlineStoreDB;
+GO
+
+CREATE TABLE Customers (
+    CustomerId UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    FirstName NVARCHAR(50) NOT NULL,
+    LastName NVARCHAR(50) NOT NULL,
+    Phone NVARCHAR(20),
+    Email NVARCHAR(50) NULL
+);
+GO
+
+CREATE TABLE Sellers (
+    SellerId UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    StoreName NVARCHAR(100) NOT NULL,
+    ContactPhone NVARCHAR(20),
+    Email NVARCHAR(50) NULL
+);
+GO
+
+CREATE TABLE ProductConditions (
+    ConditionId INT PRIMARY KEY IDENTITY(1, 1),
+    ConditionName NVARCHAR(50) NOT NULL
+);
+GO
+
+CREATE TABLE Products (
+    ProductId UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    ProductName NVARCHAR(100) NOT NULL,
+    Price MONEY NOT NULL,
+    ConditionId INT NOT NULL FOREIGN KEY REFERENCES ProductConditions(ConditionId),  -- Stan tovary
+    SellerId UNIQUEIDENTIFIER NOT NULL FOREIGN KEY REFERENCES Sellers(SellerId),
+    Description NVARCHAR(MAX),
+    AverageRating FLOAT
+);
+GO
+
+CREATE TABLE Reviews (
+    ReviewId UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    ProductId UNIQUEIDENTIFIER NOT NULL FOREIGN KEY REFERENCES Products(ProductId),
+    CustomerId UNIQUEIDENTIFIER NOT NULL FOREIGN KEY REFERENCES Customers(CustomerId),
+    Rating INT CHECK(Rating BETWEEN 1 AND 5),
+    ReviewText NVARCHAR(MAX),
+    ReviewDate DATE NOT NULL DEFAULT GETDATE()
+);
+GO
+
+CREATE TABLE Orders (
+    OrderId UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    CustomerId UNIQUEIDENTIFIER NOT NULL FOREIGN KEY REFERENCES Customers(CustomerId),
+    ProductId UNIQUEIDENTIFIER NOT NULL FOREIGN KEY REFERENCES Products(ProductId),
+    OrderDate DATE NOT NULL DEFAULT GETDATE(),
+    Quantity INT NOT NULL CHECK (Quantity > 0),
+    TotalPrice MONEY NOT NULL  -- Замість обчислювального стовпця
+);
+GO

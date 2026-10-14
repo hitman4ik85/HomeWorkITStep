@@ -1,0 +1,3 @@
+This is a sample text file.
+It contains 123456789 numbers and some symbols like !@#$%^&*().
+There are also letters and spaces.

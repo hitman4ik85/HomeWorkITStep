@@ -1,0 +1,14 @@
+{
+  "exclude": [
+    "**/bin",
+    "**/bower_components",
+    "**/jspm_packages",
+    "**/node_modules",
+    "**/obj",
+    "**/platforms"
+  ],
+  "AzureConnString": "REPLACE_WITH_LOCAL_CONNECTION_STRING",
+  "FileShare": "pv311",
+  "BlobContainer": "pv311",
+  "AccountKey": "REPLACE_WITH_LOCAL_ACCOUNT_KEY"
+}

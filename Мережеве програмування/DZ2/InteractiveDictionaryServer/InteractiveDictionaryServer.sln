@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteractiveDictionaryServer", "InteractiveDictionaryServer\InteractiveDictionaryServer.csproj", "{2ACC322E-DA60-40DE-9936-69029ED02E2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteractiveDictionaryClient", "InteractiveDictionaryClient\InteractiveDictionaryClient.csproj", "{06E7259F-76C9-47E8-83ED-28FE2BAA1B80}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2ACC322E-DA60-40DE-9936-69029ED02E2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ACC322E-DA60-40DE-9936-69029ED02E2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ACC322E-DA60-40DE-9936-69029ED02E2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ACC322E-DA60-40DE-9936-69029ED02E2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06E7259F-76C9-47E8-83ED-28FE2BAA1B80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06E7259F-76C9-47E8-83ED-28FE2BAA1B80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06E7259F-76C9-47E8-83ED-28FE2BAA1B80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06E7259F-76C9-47E8-83ED-28FE2BAA1B80}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

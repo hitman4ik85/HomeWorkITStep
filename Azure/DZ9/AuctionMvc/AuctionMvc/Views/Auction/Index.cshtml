@@ -1,0 +1,83 @@
+﻿@model IEnumerable<AuctionMvc.Models.Lot>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@inject IHttpContextAccessor Accessor
+
+@{
+    string userId = Accessor.HttpContext.Session.GetString("LoggedId");
+}
+
+<input type="hidden" id="userId" value="@userId" />
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="card m-3" style="width: 22rem;">
+            <img src="@item.PictureUrl" class="card-img-top" alt="Picture" style="height: 200px; object-fit: cover;" />
+            <div class="card-body">
+                <h5 class="card-title">@item.Name</h5>
+                <p class="card-text">@item.Description</p>
+                <p class="card-text">Price: <span id="price-@item.Name">@item.Price.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-US"))</span></p>
+                <p class="card-text">Buyout Price: @item.MaxPrice.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-US"))</p>
+                <input type="text" id="bid-@item.Name" class="form-control mb-2" placeholder="Enter your bid in USD" />
+                <button type="button" class="btn btn-primary" onclick="makeBid('@item.Name')">Make Bid</button>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/bid")
+            .build();
+
+        connection.on("NewBid", (userId, lot, price) => {
+            const el = document.getElementById("price-" + lot);
+            if (el) {
+                el.innerText = price.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+            }
+        });
+
+        connection.on("BidRejected", (lot, message) => {
+            alert("Error for lot \"" + lot + "\": " + message);
+        });
+
+        async function startConnection() {
+            try {
+                await connection.start();
+                console.log("Connected to SignalR.");
+            } catch (err) {
+                console.error("SignalR connection error: ", err);
+            }
+        }
+
+        startConnection();
+
+        async function serverMakeBid(userId, lot, price) {
+            try {
+                await connection.invoke("MakeBid", userId, lot, price);
+                console.log(`Bid made by user ${userId} on lot ${lot} with price ${price}`);
+            } catch (err) {
+                console.error("Error during MakeBid: ", err);
+            }
+        }
+
+        async function makeBid(lotName) {
+            const userId = document.getElementById("userId").value;
+            const priceInput = document.getElementById("bid-" + lotName);
+            const price = parseInt(priceInput.value);
+
+            if (isNaN(price) || price <= 0) {
+                alert("Please enter a valid bid.");
+                return;
+            }
+
+            await serverMakeBid(userId, lotName, price);
+        }
+    </script>
+}

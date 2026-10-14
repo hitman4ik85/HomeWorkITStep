@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="{% static 'css/formStyle.css' %}">
+</head>
+<body>
+    <div style="text-align: center; margin-bottom: 20px;">
+        <a href="/" class="btn btn-primary">🏠 Головна</a> |
+        <a href="/orders/" class="btn btn-success">📦 Замовлення</a>
+    </div>
+
+    <form method="post" action="{% url 'addProduct' %}">
+    {% csrf_token %}
+     <label for="name">Name:</label>
+        <input name="name" id="name" type="text" required>
+
+         <label for="desc">Description:</label>
+        <input name="desc" id="desc" type="text" required>
+
+        <label for="price">Price:</label>
+        <input name="price" id="price" type="number" required>
+
+         <label>Image URL:</label>
+        <input name="image_url" type="text">
+
+        <input type="submit" value="Add">
+    </form>
+
+    <h2>Existing Products</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th><th>Name</th><th>Price</th><th>Image</th><th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>
+                    {% if product.image_url %}
+                        <img src="{{ product.image_url }}" width="50">
+                    {% else %}
+                        No Image
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'editProduct' product.id %}">Edit</a> ||
+                    <a href="{% url 'deleteProduct' product.id %}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

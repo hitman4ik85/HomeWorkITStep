@@ -1,0 +1,43 @@
+USE master;
+GO
+
+IF DB_ID('my_productsdb') IS NOT NULL
+BEGIN
+    DROP DATABASE my_productsdb;
+END
+GO
+
+CREATE DATABASE my_productsdb;
+GO
+
+USE my_productsdb;
+
+CREATE TABLE Products
+(
+	Id INT PRIMARY KEY IDENTITY,
+	ProductName NVARCHAR(50) NOT NULL,
+	Manufacturer NVARCHAR(50) NOT NULL,
+	ProductCount INT DEFAULT 0,
+	Price MONEY NOT NULL,
+	Description NVARCHAR(150),
+	Category NVARCHAR(50) NOT NULL
+);
+GO
+CREATE TABLE Customers
+(
+	Id INT PRIMARY KEY IDENTITY,
+	FirstName NVARCHAR(30) NOT NULL,
+	LastName NVARCHAR(30) NOT NULL,
+	Email NVARCHAR(100) NOT NULL,
+	PhoneNumber NVARCHAR(15) NOT NULL
+);
+GO
+CREATE TABLE Orders
+(
+	Id INT PRIMARY KEY IDENTITY,
+	ProductId INT NOT NULL REFERENCES Products(Id) ON UPDATE CASCADE,
+	CustomerId INT NOT NULL REFERENCES Customers(Id) ON UPDATE CASCADE,
+	CreatedAt DATE NOT NULL DEFAULT GETDATE(),
+	ProductCount INT DEFAULT 1,
+);
+GO

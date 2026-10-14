@@ -1,0 +1,3 @@
+Створити новий проєкт
+На головній сторінці вивести пости з сайта https://jsonplaceholder.typicode.com/posts
+Використовувати redux toolkit

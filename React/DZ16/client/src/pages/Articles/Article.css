@@ -1,0 +1,76 @@
+.comments-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+}
+
+.comments-table th,
+.comments-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    vertical-align: top;
+}
+
+.comments-table th {
+    background-color: #f8f8f8;
+    text-align: left;
+}
+
+.actions-cell {
+    white-space: nowrap;
+}
+
+.row-action {
+    cursor: pointer;
+    color: #1677ff;
+}
+
+.row-action:hover {
+    text-decoration: underline;
+}
+
+.row-action.danger {
+    color: #cf1322;
+}
+
+.muted {
+    color: #888;
+}
+
+.edit-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.edit-input {
+    flex: 1;
+    min-width: 240px;
+}
+
+.add-comment {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+}
+
+.add-input {
+    flex: 1;
+    min-width: 260px;
+}
+
+.btn {
+    cursor: pointer;
+    border: 1px solid #ddd;
+    background: #fff;
+    padding: 6px 10px;
+    border-radius: 4px;
+}
+
+.btn:hover {
+    background: #f5f5f5;
+}
+
+.btn.btn-secondary {
+    color: #555;
+}

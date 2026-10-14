@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Added Products</title>
+    <link rel="stylesheet" href="{% static 'css/formStyle.css' %}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+        .form-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .product-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .price {
+            font-size: 18px;
+            color: #007bff;
+            margin-top: 10px;
+        }
+        em {
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <h2>Products</h2>
+    {% if products %}
+        <div class="products-grid">
+            {% for product in products %}
+                <div class="product-card">
+                    <strong>{{ product.name }}</strong><br>
+                    {{ product.desc }}<br>
+                    <div class="price">${{ product.price }}</div>
+                    {% if product.image_url %}
+                        <img src="{{ product.image_url }}" alt="Phone image">
+                    {% else %}
+                        <em>No image available</em>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p style="text-align: center;">No products added yet.</p>
+    {% endif %}
+</div>
+</body>
+</html>

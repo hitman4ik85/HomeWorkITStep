@@ -1,0 +1,91 @@
+Task3 - 2 variant
+using System;
+
+class Person
+{
+    private int id;
+    private string name;
+    private string lastName;
+    private int age;
+    private string studyOrWork;
+
+    public Person(int id, string name, string lastName, int age, string studyOrWork)
+    {
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+        this.age = age;
+        this.studyOrWork = studyOrWork;
+    }
+
+    public Person(int id, string name, string lastName, int age)
+    {
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+        this.age = age;
+    }
+
+    public Person(string name, string lastName, int age)
+    {
+        this.name = name;
+        this.lastName = lastName;
+        this.age = age;
+    }
+
+    public Person(int id, string name, string lastName)
+    {
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+    }
+
+    public Person(int id, string name)
+    {
+        this.id = id;
+        this.name = name;
+    }
+
+    public void ShowInfo1()
+    {
+        Console.WriteLine($"ID: {id}, Name: {name}, Last Name: {lastName}, Age: {age}, Study/work: {studyOrWork}");
+    }
+
+    public void ShowInfo2()
+    {
+        Console.WriteLine($"ID: {id}, Name: {name}, Last Name: {lastName}, Age: {age}");
+    }
+
+    public void ShowInfo3()
+    {
+        Console.WriteLine($"Name: {name}, Last Name: {lastName}, Age: {age}");
+    }
+
+    public void ShowInfo4()
+    {
+        Console.WriteLine($"ID: {id}, Name: {name}, Last Name: {lastName}");
+    }
+
+    public void ShowInfo5()
+    {
+        Console.WriteLine($"ID: {id}, Name: {name}");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Person user1 = new Person(1, "John", "Doe", 25, "study");
+        Person user2 = new Person(2, "Karlo", "Litvin", 31);
+        Person user3 = new Person("Pamela", "Jemison", 42);
+        Person user4 = new Person(4, "Bob", "Smith");
+        Person user5 = new Person(5, "Karolina");
+
+        user1.ShowInfo1();
+        user2.ShowInfo2();
+        user3.ShowInfo3();
+        user4.ShowInfo4();
+        user5.ShowInfo5();
+    }
+}

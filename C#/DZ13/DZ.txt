@@ -1,0 +1,147 @@
+По прикладу цих задач: 
+public delegate void DelAlarm(string msg); // Делегат, що приймає рядок
+
+class Sensor
+{
+    public event DelAlarm onEventAlarm; // Подія на основі делегата
+
+    public string name { get; set; } // Властивість для зберігання імені датчика
+
+    // Конструктор класу Sensor
+    public Sensor(string name)
+    {
+        this.name = name; // Ініціалізація імені
+    }
+
+    // Метод для ініціювання тривоги
+    public void MakeAlarm()
+    {
+        Console.WriteLine($"Sensor {name} view danger"); // Повідомлення про небезпеку
+
+        // Виклик події, якщо є підписники
+        if (onEventAlarm != null)
+        {
+            onEventAlarm($"Alarm, {name} Start");
+        }
+    }
+}
+
+class HeadBlock
+{
+    // Метод, який буде реагувати на тривогу
+    public void showBlock(string msg)
+    {
+        Console.WriteLine($"Centralnui block spracjyvav, {msg}");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        HeadBlock headBlock = new HeadBlock(); // Створення об'єкта центрального блоку
+
+        // Створення двох датчиків
+        Sensor windowSensor = new Sensor("Window Sensor");
+        Sensor doorSensor = new Sensor("Door Sensor");
+        Sensor stepSensor = new Sensor("Step Sensor");
+
+        // Підписка на подію для обох датчиків
+        windowSensor.onEventAlarm += headBlock.showBlock;
+        doorSensor.onEventAlarm += headBlock.showBlock;
+        stepSensor.onEventAlarm += headBlock.showBlock;
+
+        // Виклик тривоги для обох датчиків
+        doorSensor.MakeAlarm();
+        windowSensor.MakeAlarm();
+        stepSensor.MakeAlarm();
+    }
+}
+
+
+public delegate void DelCheckSensor(int speed, string distance);
+
+class WindSensor
+{
+    public event DelCheckSensor OnWindSensor;
+
+    public void UpDateWind(int speed, string distance)
+    {
+        if (OnWindSensor != null)
+        {
+            OnWindSensor(speed, distance);
+
+        }
+    }
+}
+
+class Program
+{
+    static void ShowWindSensor(int speed, string distance)
+    {
+        Console.WriteLine($"Speed: {speed}, distance: {distance}");
+    }
+    static void Main(string[] args)
+    {
+        WindSensor ws = new WindSensor();
+        ws.OnWindSensor += ShowWindSensor;
+        ws.UpDateWind(57, "150");
+        ws.UpDateWind(1, "1");
+        ws.UpDateWind(123, "78");
+        ws.UpDateWind(97, "87");
+        ws.UpDateWind(52, "145");
+
+    }
+}
+
+
+public delegate int DelCalculate(int x, int y);
+
+class Calculator
+{
+    public event DelCalculate onCalculator;
+
+    public void Calculate(int x, int y)
+    {
+        if(onCalculator != null)
+        {
+            Console.WriteLine($"result = {x} + {y} = {onCalculator(x,y)}");
+        }
+    }
+}
+
+class Program
+{
+    static int showCalculate(int x, int y)
+    {
+        return x+y;
+    }
+    static void Main(string[] args)
+    {
+        Calculator cl = new Calculator();
+        cl.onCalculator += showCalculate;
+        cl.Calculate(15, 7);
+        cl.Calculate(20, 1);
+        cl.Calculate(9, 0);
+
+    }
+}
+, з дотримуванням такогож синтаксису написання коду як у мене, виконати наступне завдання:
+
+Створіть клас SimpleCalculator, який реалізує простий калькулятор.
+Клас повинен мати можливість виконувати чотири базові арифметичні операції: додавання, віднімання, множення та ділення.
+Вимоги до написання коду:
+1. Делегат: Створіть делегат OperationCompletedHandler, який приймає два числа (додатні числа з плаваючою комою),
+тип операції (рядок) та результат операції (число з плаваючою комою).
+2. Подія: Реалізуйте подію OnOperationCompleted, яка буде викликатися після виконання кожної арифметичної операції.
+3. Метод Calculate: Створіть метод Calculate(double num1, double num2, string operation), який:
+- Приймає два числа та тип операції як параметри.
+- Виконує відповідну операцію на основі переданого типу:
+    - Додавання ("+")
+    - Віднімання ("-")
+    - Множення ("*")
+    - Ділення ("/"). Якщо друге число дорівнює нулю, виведіть повідомлення про помилку.
+- Викликає подію OnOperationCompleted, передаючи два числа, тип операції та результат.
+4. Обробник події: Напишіть метод-обробник події, який буде виводити в консоль інформацію про виконану операцію, включаючи два числа, тип операції та результат.
+5. Взаємодія з користувачем: В Main-методі реалізуйте просту взаємодію з користувачем,
+де користувач може вводити два числа та тип операції, а також викликати метод Calculate для виконання обчислень.

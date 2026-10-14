@@ -1,0 +1,58 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    background-color: rgb(232, 232, 224) !important;
+    padding: 3%;
+}
+
+.col-md-4{
+    width: 100% !important;
+}
+.inputs{
+    display: flex;
+    gap: 1%;
+
+}
+.col-12{
+    margin-top: 2%;
+}
+label{
+    font-weight: bold;
+}
+
+.switches{
+    display: flex;
+    gap: 3%;
+}
+
+.form-switch .form-check-input:checked {
+    background-color: #28a745;
+    border-radius: 20%;
+}
+
+
+.form-switch .form-check-input:not(:checked) {
+    background-color: #f45252;
+    border-radius: 20%;
+}
+
+.radioBut{
+    display: flex;
+    gap: 2%;
+}
+
+.btn{
+    min-width: 40px;
+}
+#button_sign{
+    border-radius: 20px;
+}
+.form-control.is-valid, .was-validated .form-control:valid {
+    background-image: url(icons/valid.png) !important;
+}
+
+.form-control.is-invalid, .was-validated .form-control:invalid {
+    background-image: url(icons/invalid.png) !important;
+}

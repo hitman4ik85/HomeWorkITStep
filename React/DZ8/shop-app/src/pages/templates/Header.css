@@ -1,0 +1,44 @@
+header {
+  background: #333;
+  color: #fff;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-nav a,
+.right-nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.left-nav a:hover,
+.right-nav a:hover,
+.left-nav a.active,
+.right-nav a.active {
+  color: #f90;
+}
+
+.right-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.icon-link {
+  position: relative;
+  font-size: 18px;
+}
+
+.count {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: crimson;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+}

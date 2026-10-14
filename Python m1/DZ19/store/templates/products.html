@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Товари - IT-Shop{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-center">Каталог товарів</h2>
+
+<!-- Смартфони -->
+<h3 class="mt-5 mb-3 text-primary">Смартфони</h3>
+<div class="row g-4">
+    {% for phone in phones %}
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <img src="{{ phone.img }}" class="card-img-top" alt="{{ phone.name }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ phone.name }}</h5>
+                <p class="card-text">{{ phone.desc }}</p>
+                <p class="text-success">{{ phone.price }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Ноутбуки -->
+<h3 class="mt-5 mb-3 text-primary">Ноутбуки</h3>
+<div class="row g-4">
+    {% for laptop in laptops %}
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <img src="{{ laptop.img }}" class="card-img-top" alt="{{ laptop.name }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ laptop.name }}</h5>
+                <p class="card-text">{{ laptop.desc }}</p>
+                <p class="text-success">{{ laptop.price }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Аксесуари -->
+<h3 class="mt-5 mb-3 text-primary">Аксесуари</h3>
+<div class="row g-4 mb-5">
+    {% for item in accessories %}
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <img src="{{ item.img }}" class="card-img-top" alt="{{ item.name }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ item.name }}</h5>
+                <p class="card-text">{{ item.desc }}</p>
+                <p class="text-success">{{ item.price }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
